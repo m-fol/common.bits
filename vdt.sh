@@ -13,7 +13,7 @@ build_requires:
 ##############################
 . $(bits-include AutoToolsRecipe)
 ##############################
-MODULE_OPTIONS="--bin --lib"
+MODULE_OPTIONS="--bin --lib --cmake"
 ##############################
 function Configure() {
   cmake $SOURCEDIR -DCMAKE_INSTALL_PREFIX=$INSTALLROOT

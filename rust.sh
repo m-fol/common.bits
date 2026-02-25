@@ -18,7 +18,7 @@ MODULE_OPTIONS="--bin --lib"
 ##############################
 function Prepare() {
     case $ARCHITECTURE in
-	ubuntu2404_x86-64)
+	ubuntu2404_x86-64|ubuntu2510_x86-64)
 	    arch="x86_64-unknown-linux-gnu"
          ;;   
 	*)

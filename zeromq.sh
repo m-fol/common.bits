@@ -6,20 +6,27 @@ requires:
 build_requires:
   - "CMake"
   - ninja
-  - alibuild-recipe-tools
+  - bits-recipe-tools
 ---
-cd $BUILDDIR
-cmake $SOURCEDIR                          \
+#!/bin/bash -e
+##############################
+. $(bits-include CMakeRecipe)
+##############################
+MODULE_OPTIONS="--bin --lib --cmake"
+##############################
+function Configure() {
+  cmake $SOURCEDIR                          \
       -G Ninja                            \
       -DENABLE_WS=OFF                     \
       -DBUILD_TESTS=OFF                   \
       -DCMAKE_INSTALL_LIBDIR=lib          \
       -DCMAKE_INSTALL_PREFIX=$INSTALLROOT
+}
+function Make() {
+   ninja ${JOBS+-j $JOBS} install
+}
 
-ninja ${JOBS+-j $JOBS} install
+function MakeInstall() {
+   true
+}
 
-# Modulefile
-MODULEDIR="$INSTALLROOT/etc/modulefiles"
-MODULEFILE="$MODULEDIR/$PKGNAME"
-mkdir -p "$MODULEDIR"
-alibuild-generate-module --lib > $MODULEFILE

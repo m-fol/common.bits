@@ -12,7 +12,7 @@ build_requires:
 ##############################
 . $(bits-include AutoToolsRecipe)
 ##############################
-MODULE_OPTIONS="--lib --bin" 
+MODULE_OPTIONS="--lib --bin --cmake" 
 ##############################
 function Configure() {
     :;

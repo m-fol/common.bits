@@ -1,6 +1,6 @@
 package: DD4Hep
 version: "%(tag_basename)s"
-tag: "v01-31"
+tag: "v01-34"
 source: https://github.com/AIDASoft/DD4hep.git
 requires:
   - "GCC-Toolchain:(?!osx)"
@@ -32,7 +32,8 @@ function Configure() {
       -DBUILD_TESTING=ON \
       -DROOT_DIR=$ROOTSYS \
       -DCMAKE_BUILD_TYPE=Release \
-      -DBUILD_DOCS=OFF
+      -DBUILD_DOCS=OFF \
+      -DCMAKE_PREFIX_PATH="$BOOST_ROOT;"
 }
 function Make() {
      cmake --build  . -- ${CMAKE_OPTIONS} ${JOBS:+-j$JOBS}

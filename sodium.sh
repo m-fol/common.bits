@@ -1,6 +1,6 @@
 package: sodium
-version: v1.0.8
-tag: 1.0.8
+version: 1.0.21
+tag: 1.0.21-RELEASE
 source: https://github.com/jedisct1/libsodium
 build_requires:
   - "autotools:(slc6|slc7)"

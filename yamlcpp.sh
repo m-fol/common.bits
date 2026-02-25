@@ -1,6 +1,6 @@
 package: yamlcpp
 version: "%(tag_basename)s"
-tag: "0.8.0"
+tag: "yaml-cpp-0.9.0"
 source: https://github.com/jbeder/yaml-cpp
 requires:
   - boost
@@ -14,7 +14,7 @@ prefer_system: (?!slc5)
 ##############################
 . $(bits-include CMakeRecipe)
 ##############################
-MODULE_OPTIONS="--bin --lib --inc --root"
+MODULE_OPTIONS="--bin --lib --cmake --root"
 ##############################
 function Prepare() {
   rsync -av --delete --delete-excluded $SOURCEDIR/ ./

@@ -37,5 +37,5 @@ function MakeInstall() {
 }
 
 function PostInstall() {
-  echo "setenv RANGEV3_INCLUDE_DIR \$PKG_ROOT" >> $MODULEFILE
+  echo "setenv RANGEV3_INCLUDE_DIR \$PKG_ROOT/include" >> $MODULEFILE
 }

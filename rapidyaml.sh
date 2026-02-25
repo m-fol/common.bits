@@ -13,7 +13,7 @@ build_requires:
 ##############################
 . $(bits-include CMakeRecipe)
 ##############################
-MODULE_OPTIONS="--bin --lib"
+MODULE_OPTIONS="--bin --lib --cmake"
 ##############################
 function Prepare() {
     (cd $SOURCEDIR; git submodule update --init --recursive) 
