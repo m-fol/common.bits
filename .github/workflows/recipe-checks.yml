@@ -1,4 +1,4 @@
----
+--- 
 # GitHub workflow to check pull requests and commits for pitfalls and formatting
 # mistakes in build recipes.
 name: Check recipes
