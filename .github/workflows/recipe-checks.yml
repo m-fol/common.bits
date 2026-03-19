@@ -4,6 +4,7 @@
 name: Check recipes
 
 'on':
+  workflow_dispatch:
   push:
     paths:
       - '*.sh'
