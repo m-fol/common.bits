@@ -10,7 +10,8 @@ build_requires:
 ---
 #!/bin/bash -e
 ##############################
-# shellcheck source=../sw/SOURCES/bits-recipe-tools/0.0.8/0.0.7/.git/index
+# shellcheck source=/dev/null
+# (If dynamic) Actual path would be: source=../sw/SOURCES/bits-recipe-tools/0.0.8/0.0.7/.git/index
 . "$(bits-include AutoToolsRecipe)"
 ##############################
 # value appears unused, uncomment if needed
