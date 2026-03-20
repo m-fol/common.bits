@@ -35,7 +35,7 @@ autoreconf -ifv
 make -j"$JOBS"
 make install
 
-PYVER="$(basename $(find "$INSTALLROOT"/lib -type d -name 'python*'))"
+PYVER="$(basename "$(find "$INSTALLROOT"/lib -type d -name 'python*')")"
 
 # Modulefile
 MODULEDIR="$INSTALLROOT/etc/modulefiles"
