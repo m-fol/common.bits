@@ -31,7 +31,7 @@ jobs:
         run: |
           # this is to make sure the flag isn't included in some way
           set +e
-          for file in *.sh do
+          for file in *.sh; do
              echo "In: $file"
              shellcheck --severity=style <(awk '/^---$ {flag=1; next} flag' "$file") || true
           done
