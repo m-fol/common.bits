@@ -26,7 +26,13 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-
+          
+      - name: Run shellcheck linter
+        run: |
+          # this is to make sure the flag isn't included in some way
+          set +e
+          shellcheck --severity=style <(awk '/^---$/ {flag=1; next} flag' ./*.sh)
+          
       - name: Run linter
         run: |
           if [ -n "$BASE_SHA" ]; then
