@@ -17,24 +17,25 @@ build_requires:
 case $ARCHITECTURE in
   osx*)
     # If we preferred system tools, we need to make sure we can pick them up.
-    [[ ! $GSL_ROOT ]] && GSL_ROOT=`brew --prefix gsl`
+    [[ ! $GSL_ROOT ]] && GSL_ROOT=$(brew --prefix gsl)
   ;;
   *)
-    ARCH_LDFLAGS="-Wl,--no-as-needed"
+    # value appears unused, uncomment if error
+    # ARCH_LDFLAGS="-Wl,--no-as-needed"
   ;;
 esac
 
-rsync -a --delete --exclude '**/.git' $SOURCEDIR/ ./
+rsync -a --delete --exclude '**/.git' "$SOURCEDIR"/ ./
 
 autoreconf -ifv
 ./configure                                 \
   ${BOOST_ROOT:+--with-boost="$BOOST_ROOT"} \
   --with-hepmc="$HEPMC_ROOT"                \
   --prefix="$INSTALLROOT"
-make -j$JOBS
+make -j"$JOBS"
 make install
 
-PYVER="$(basename $(find $INSTALLROOT/lib -type d -name 'python*'))"
+PYVER="$(basename $(find "$INSTALLROOT"/lib -type d -name 'python*'))"
 
 # Modulefile
 MODULEDIR="$INSTALLROOT/etc/modulefiles"
