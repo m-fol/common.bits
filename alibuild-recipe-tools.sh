@@ -3,6 +3,7 @@ version: "0.2.6"
 tag: "v0.2.6"
 source: https://github.com/alisw/alibuild-recipe-tools
 ---
+#!/bin/bash
 mkdir -p "$INSTALLROOT"/bin
 install "$SOURCEDIR"/alibuild-generate-module "$INSTALLROOT"/bin
 
