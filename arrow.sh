@@ -65,7 +65,7 @@ case $ARCHITECTURE in
    # use compatible llvm@18 from brew, if available. This
    # must match the prefer_system_check in clang.sh
    CLANG_EXECUTABLE="${CLANG_REVISION:+$CLANG_ROOT/bin-safe/clang}"
-   if [ -z "${CLANG_EXECUTABLE}"] && [-d "$(brew --prefix llvm)@18" ]; then
+   if [ -z "${CLANG_EXECUTABLE}" ] && [-d "$(brew --prefix llvm)@18" ]; then
      CLANG_EXECUTABLE="$(brew --prefix llvm)@18/bin/clang"
    fi
    ;;
