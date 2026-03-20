@@ -31,7 +31,10 @@ jobs:
         run: |
           # this is to make sure the flag isn't included in some way
           set +e
-          shellcheck --severity=style <(awk '/^---$/ {flag=1; next} flag' *.sh) || true
+          for file in *.sh do
+             echo "In: $file"
+             shellcheck --severity=style <(awk '/^---$ {flag=1; next} flag' "$file") || true
+          done
           
       - name: Run linter
         run: |
