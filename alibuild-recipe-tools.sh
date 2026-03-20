@@ -3,8 +3,8 @@ version: "0.2.6"
 tag: "v0.2.6"
 source: https://github.com/alisw/alibuild-recipe-tools
 ---
-mkdir -p $INSTALLROOT/bin
-install $SOURCEDIR/alibuild-generate-module $INSTALLROOT/bin
+mkdir -p "$INSTALLROOT"/bin
+install "$SOURCEDIR"/alibuild-generate-module "$INSTALLROOT"/bin
 
 MODULEDIR="$INSTALLROOT/etc/modulefiles"
 MODULEFILE="$MODULEDIR/$PKGNAME"
