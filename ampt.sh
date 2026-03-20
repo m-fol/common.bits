@@ -8,8 +8,8 @@ requires:
 ---
 #!/bin/bash -e
 
-cmake  $SOURCEDIR                           \
-       -DCMAKE_INSTALL_PREFIX=$INSTALLROOT  \
+cmake  "$SOURCEDIR"                           \
+       -DCMAKE_INSTALL_PREFIX="$INSTALLROOT"  \
        ${HEPMC_REVISION:+-DHEPMC_ROOT=$HEPMC_ROOT}
 
 make ${JOBS+-j $JOBS} install
