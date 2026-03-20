@@ -33,7 +33,7 @@ jobs:
           set +e
           for file in *.sh; do
              echo "In: $file"
-             shellcheck --severity=style <(awk '/^---$ {flag=1; next} flag' "$file") || true
+             shellcheck --severity=style <(awk '/^---$/ {flag=1; next} flag' "$file") || true
           done
           
       - name: Run linter
