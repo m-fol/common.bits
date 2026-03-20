@@ -36,8 +36,8 @@ jobs:
             git diff -z --diff-filter d --name-only "$merge_base..$HEAD_SHA" -- '*.sh' |
               xargs -0tr alidistlint -f github --changes "$merge_base..$HEAD_SHA"
           else
-            # On push, check every file, ignoring warnings and notes.
-            alidistlint -ef github ./*.sh
+            # On push, check every file, keeping warnings and notes.
+            alidistlint -f github ./*.sh
           fi
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
