@@ -33,13 +33,13 @@ prepend_path:
 ---
 #!/bin/bash -e
 
-mkdir -p $INSTALLROOT
-cmake $SOURCEDIR                             \
-  -G Ninja                                   \
-  ${CXXSTD:+-DCMAKE_CXX_STANDARD=$CXXSTD}    \
-  -DCMAKE_INSTALL_LIBDIR=lib                 \
-  -DBUILD_TESTING=OFF                        \
-  -DCMAKE_INSTALL_PREFIX=$INSTALLROOT
+mkdir -p "$INSTALLROOT"
+cmake "$SOURCEDIR"                             \
+  -G Ninja                                     \
+  ${CXXSTD:+-DCMAKE_CXX_STANDARD=$CXXSTD}      \
+  -DCMAKE_INSTALL_LIBDIR=lib                   \
+  -DBUILD_TESTING=OFF                          \
+  -DCMAKE_INSTALL_PREFIX="$INSTALLROOT"
 
 cmake --build . -- ${JOBS:+-j$JOBS} install
 
