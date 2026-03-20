@@ -10,9 +10,11 @@ build_requires:
 ---
 #!/bin/bash -e
 ##############################
-. $(bits-include AutoToolsRecipe)
+# shellcheck source=../sw/SOURCES/bits-recipe-tools/0.0.8/0.0.7/.git/index
+. "$(bits-include AutoToolsRecipe)"
 ##############################
-MODULE_OPTIONS="--lib --bin --cmake" 
+# value appears unused, uncomment if needed
+# MODULE_OPTIONS="--lib --bin --cmake" 
 ##############################
 function Configure() {
     :;
@@ -23,7 +25,7 @@ function Make() {
 }
 
 function MakeInstall() {
-    cp -r $BUILDDIR $INSTALLROOT/bin
+    cp -r "$BUILDDIR" "$INSTALLROOT"/bin
 }
 
 
