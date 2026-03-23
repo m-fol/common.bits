@@ -4,11 +4,11 @@ tag: alice/0.16.0
 source: https://github.com/alisw/aurora
 ---
 #!/bin/bash -ex
-rsync -a $SOURCEDIR/ ./
+rsync -a "$SOURCEDIR"/ ./
 ./pants binary src/main/python/apache/aurora/client:aurora
-mkdir -p $INSTALLROOT/bin
-cp dist/aurora.pex $INSTALLROOT/bin/aurora
-cp dist/aurora_admin.pex $INSTALLROOT/bin/aurora_admin
+mkdir -p "$INSTALLROOT"/bin
+cp dist/aurora.pex "$INSTALLROOT"/bin/aurora
+cp dist/aurora_admin.pex "$INSTALLROOT"/bin/aurora_admin
 
 # Modulefile
 MODULEDIR="$INSTALLROOT/etc/modulefiles"
