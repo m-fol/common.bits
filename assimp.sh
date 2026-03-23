@@ -16,19 +16,20 @@ prefer_system_check:
 # shellcheck source=/dev/null
 . "$(bits-include CMakeRecipe)"
 ##############################
-MODULE_OPTIONS="--bin --lib"
+# Module_options is unused (SC2034 warning)
+# MODULE_OPTIONS="--bin --lib"
 ##############################
 function Prepare() {
-    rsync -av --delete --delete-excluded $SOURCEDIR/ ./
+    rsync -av --delete --delete-excluded "$SOURCEDIR"/ ./
 }
 
 function Configure() {
     mkdir build && cd build
-    cmake .. -DCMAKE_INSTALL_PREFIX=$INSTALLROOT  -DASSIMP_BUILD_ASSIMP_TOOLS=ON
+    cmake .. -DCMAKE_INSTALL_PREFIX="$INSTALLROOT"  -DASSIMP_BUILD_ASSIMP_TOOLS=ON
  }
 
 function Make() {
-     cmake --build . -- ${CMAKE_OPTIONS} ${JOBS:+-j$JOBS}
+     cmake --build . -- "${CMAKE_OPTIONS}" ${JOBS:+-j$JOBS}
 }
 
 function MakeInstall() {
