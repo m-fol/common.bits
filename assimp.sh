@@ -12,7 +12,9 @@ prefer_system_check:
 ---
 #!/bin/bash -e
 ##############################
-. $(bits-include CMakeRecipe)
+# Source set as null. File outside of scope. Review if error.
+# shellcheck source=/dev/null
+. "$(bits-include CMakeRecipe)"
 ##############################
 MODULE_OPTIONS="--bin --lib"
 ##############################
