@@ -8,9 +8,9 @@ build_requires:
   - SWIG
 ---
 #!/bin/bash
-rsync -a --delete --exclude "**/.git" $SOURCEDIR/ .
-[[ "$ZLIB_ROOT" == '' ]] || cp -v $ZLIB_ROOT/lib/libz.a .
-./configure --prefix=$INSTALLROOT                     \
+rsync -a --delete --exclude "**/.git" "$SOURCEDIR"/ .
+[[ "$ZLIB_ROOT" == '' ]] || cp -v "$ZLIB_ROOT"/lib/libz.a .
+./configure --prefix="$INSTALLROOT"                     \
             ${SWIG_ROOT:+--with-swig-path=$SWIG_ROOT} \
             ${ZLIB_ROOT:+--with-zlib-path=$PWD}
 make ${JOBS+-j$JOBS}
