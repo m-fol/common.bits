@@ -15,17 +15,17 @@ source: https://github.com/alisw/bloaty
 ---
 #!/bin/bash -e
 
-cmake $SOURCEDIR                                    \
+cmake "$SOURCEDIR"                                    \
   -G Ninja                                          \
   ${CXXSTD:+-DCMAKE_CXX_STANDARD=$CXXSTD}           \
   -DBUILD_TESTING=OFF                 \
   -DBLOATY_PREFER_SYSTEM_CAPSTONE=TRUE \
-  -DCMAKE_INSTALL_PREFIX=$INSTALLROOT
+  -DCMAKE_INSTALL_PREFIX="$INSTALLROOT"
 
 cmake --build . -- ${JOBS:+-j$JOBS} install
 
 
 #ModuleFile
 mkdir -p etc/modulefiles
-alibuild-generate-module --bin --lib > etc/modulefiles/$PKGNAME
-mkdir -p $INSTALLROOT/etc/modulefiles && rsync -a --delete etc/modulefiles/ $INSTALLROOT/etc/modulefiles
+alibuild-generate-module --bin --lib > etc/modulefiles/"$PKGNAME"
+mkdir -p "$INSTALLROOT"/etc/modulefiles && rsync -a --delete etc/modulefiles/ "$INSTALLROOT"/etc/modulefiles
