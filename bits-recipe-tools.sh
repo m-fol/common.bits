@@ -3,9 +3,9 @@ version: "0.0.8"
 tag: "v0.0.8"
 source: https://github.com/bitsorg/bits-recipe-tools
 ---
-mkdir -p $INSTALLROOT/bin
-install $SOURCEDIR/*Recipe $INSTALLROOT
-install $SOURCEDIR/bits-* $INSTALLROOT/bin
+mkdir -p "$INSTALLROOT"/bin
+install "$SOURCEDIR"/*Recipe $INSTALLROOT
+install "$SOURCEDIR"/bits-* $INSTALLROOT/bin
 
 MODULEDIR="$INSTALLROOT/etc/modulefiles"
 MODULEFILE="$MODULEDIR/$PKGNAME"
