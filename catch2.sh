@@ -11,6 +11,7 @@ build_requires:
 prepend_path:
   PKG_CONFIG_PATH: "$CATCH2_ROOT/share/pkgconfig"
 ---
+#!/bin/bash 
 cmake "$SOURCEDIR"                                  \
       -DCMAKE_CXX_STANDARD=20                       \
       -DCMAKE_INSTALL_LIBDIR=lib                    \
