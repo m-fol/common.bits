@@ -67,7 +67,7 @@ cd "$BUILDDIR"/tools/build || exit
 bash bootstrap.sh $TOOLSET
 case $ARCHITECTURE in
   osx*)  ;;
-  *) CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$(python3 -c 'import sysconfig; print(sysconfig.get_path("include"))')" ;;
+  *) CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$(python3 -c 'import sysconfig; print(sysconfig.get_path("include"))')"
      export CPLUS_INCLUDE_PATH ;;
 esac
 mkdir -p "$TMPB2"
