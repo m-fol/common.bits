@@ -14,7 +14,7 @@ build_requires:
 prepend_path:
   ROOT_INCLUDE_PATH: "$BOOST_ROOT/include"
 ---
-BOOST_PYTHON=
+$BOOST_PYTHON=
 BOOST_CXXFLAGS=
 if [[ $ARCHITECTURE != osx* && $PYTHON_MODULES_VERSION ]]; then
   # Enable boost_python on platforms other than macOS
@@ -59,7 +59,7 @@ case $ARCHITECTURE in
 esac
 
 rsync -a --no-specials --no-devices  --chmod=ug=rwX --exclude '**/.git' --delete --delete-excluded "$SOURCEDIR"/ "$BUILDDIR"/
-cd "$BUILDDIR"/tools/build
+cd "$BUILDDIR"/tools/build || exit
 # This is to work around an issue in boost < 1.70 where the include path misses
 # the ABI suffix. E.g. ../include/python3 rather than ../include/python3m.
 # This is causing havok on different combinations of Ubuntu / Anaconda
@@ -67,12 +67,13 @@ cd "$BUILDDIR"/tools/build
 bash bootstrap.sh $TOOLSET
 case $ARCHITECTURE in
   osx*)  ;;
-  *) export CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$(python3 -c 'import sysconfig; print(sysconfig.get_path("include"))')" ;;
+  *) CPLUS_INCLUDE_PATH="$CPLUS_INCLUDE_PATH:$(python3 -c 'import sysconfig; print(sysconfig.get_path("include"))')" ;;
+     export CPLUS_INCLUDE_PATH ;;
 esac
-mkdir -p $TMPB2
+mkdir -p "$TMPB2"
 ./b2 install --prefix=$TMPB2
 export PATH=$TMPB2/bin:$PATH
-cd $BUILDDIR
+cd "$BUILDDIR" || exit
 b2 -q                                                 \
    -d2                                                \
    ${JOBS+-j $JOBS}                                   \
