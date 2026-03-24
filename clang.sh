@@ -24,17 +24,17 @@ unset CXXFLAGS
 unset CFLAGS
 unset LDFLAGS
 
-case '$ARCHITECTURE' in
+case "$ARCHITECTURE" in
   # Needed to have the C headers
   osx_*) DEFAULT_SYSROOT=$(xcrun --show-sdk-path) ;;
   *) DEFAULT_SYSROOT= ;;
 esac
-case '$ARCHITECTURE' in
+case "$ARCHITECTURE" in
   *x86-64*) LLVM_TARGETS_TO_BUILD=X86 ;;
   *x86_64*) LLVM_TARGETS_TO_BUILD=X86 ;;
   *arm64*) LLVM_TARGETS_TO_BUILD=AArch64 ;;
   *aarch64*) LLVM_TARGETS_TO_BUILD=AArch64 ;;
-  *) echo 'Unknown LLVM target for architecture $ARCHITECTURE' >&2; exit 1 ;;
+  *) echo "Unknown LLVM target for architecture $ARCHITECTURE" >&2; exit 1 ;;
 esac
 
 # BUILD_SHARED_LIBS=ON is needed for e.g. adding dynamic plugins to clang-tidy.
