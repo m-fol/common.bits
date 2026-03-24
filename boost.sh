@@ -14,7 +14,8 @@ build_requires:
 prepend_path:
   ROOT_INCLUDE_PATH: "$BOOST_ROOT/include"
 ---
-$BOOST_PYTHON=
+#!/bin/bash
+BOOST_PYTHON=
 BOOST_CXXFLAGS=
 if [[ $ARCHITECTURE != osx* && $PYTHON_MODULES_VERSION ]]; then
   # Enable boost_python on platforms other than macOS
@@ -71,7 +72,7 @@ case $ARCHITECTURE in
      export CPLUS_INCLUDE_PATH ;;
 esac
 mkdir -p "$TMPB2"
-./b2 install --prefix=$TMPB2
+./b2 install --prefix="$TMPB2"
 export PATH=$TMPB2/bin:$PATH
 cd "$BUILDDIR" || exit
 b2 -q                                                 \
