@@ -11,11 +11,14 @@ prefer_system: (?!slc5)
 prefer_system_check:
 ---
 #!/bin/bash -e
-. $(bits-include AutoToolsRecipe)
+# shellcheck source=/dev/null
+. "$(bits-include AutoToolsRecipe)"
 ##############################
-MODULE_OPTIONS="--bin --lib"
-CMAKE_OPTIONS="${IGNORE_ERRORS:+-k}"
+# SC2034 (warning): MODULE_OPTIONS appears unused. Verify use (or export if used externally)
+# SC2034 (warning): CMAKE_OPTIONS appears unused. Verify use (or export if used externally)
+# MODULE_OPTIONS="--bin --lib"
+# CMAKE_OPTIONS="${IGNORE_ERRORS:+-k}"
 ##############################
 function Configure() {
-  ./configure --prefix=$INSTALLROOT
+  ./configure --prefix="$INSTALLROOT"
 }
