@@ -11,8 +11,8 @@ build_requires:
 ---
 #!/bin/bash -e
 
-cmake $SOURCEDIR                                 \
-      -DCMAKE_INSTALL_PREFIX=$INSTALLROOT        \
+cmake "$SOURCEDIR"                                 \
+      -DCMAKE_INSTALL_PREFIX="$INSTALLROOT"        \
       -DDYNAMIC_ARCH=ON                          \
       -DBUILD_WITHOUT_LAPACK=OFF                 \
       -DCMAKE_INSTALL_LIBDIR=lib                 \
@@ -22,8 +22,8 @@ make install
 
 #ModuleFile
 mkdir -p etc/modulefiles
-alibuild-generate-module --bin --lib > etc/modulefiles/$PKGNAME
-mkdir -p $INSTALLROOT/etc/modulefiles && rsync -a --delete etc/modulefiles/ $INSTALLROOT/etc/modulefiles
+alibuild-generate-module --bin --lib > etc/modulefiles/"$PKGNAME"
+mkdir -p "$INSTALLROOT"/etc/modulefiles && rsync -a --delete etc/modulefiles/ "$INSTALLROOT"/etc/modulefiles
 
 
 
