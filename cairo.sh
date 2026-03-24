@@ -16,16 +16,18 @@ prefer_system_check:
 ---
 #!/bin/bash -e
 ##############################
-. $(bits-include AutoToolsRecipe)
+# shellcheck source=/dev/null
+. "$(bits-include AutoToolsRecipe)"
 ##############################
-MODULE_OPTIONS="--bin --lib"
+# SC2034 (warning): MODULE_OPTIONS appears unused. Verify use (or export if used externally)
+# MODULE_OPTIONS="--bin --lib"
 ##############################
 function Prepare() {
-    rsync -av --delete --delete-excluded $SOURCEDIR/ ./
+    rsync -av --delete --delete-excluded "$SOURCEDIR"/ ./
 }
 function Configure() {
     mkdir build
-    meson setup build --prefix=$INSTALLROOT
+    meson setup build --prefix="$INSTALLROOT"
 }
 function Make() {
     ninja -C build
