@@ -8,10 +8,12 @@ build_requires:
 ---
 #!/bin/bash -e
 ##############################
+# shellcheck source=/dev/null
 . $(bits-include CMakeRecipe)
 ##############################
-MODULE_OPTIONS="--bin --lib --cmake"
+# SC2034 (warning): MODULE_OPTIONS appears unused. Verify use (or export if used externally)
+# MODULE_OPTIONS="--bin --lib --cmake"
 ##############################
 function Configure() {
-  cmake $SOURCEDIR -DCMAKE_INSTALL_PREFIX=$INSTALLROOT
+  cmake "$SOURCEDIR" -DCMAKE_INSTALL_PREFIX="$INSTALLROOT"
 }
